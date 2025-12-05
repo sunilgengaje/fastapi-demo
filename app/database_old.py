@@ -1,18 +1,7 @@
 # app/database.py
-import os
-from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.exc import OperationalError
-
-# load .env (project root)
-load_dotenv()
-
-# get DB URL from env
-DATABASE_URL = os.getenv("DATABASE_URL")
-if not DATABASE_URL:
-    raise RuntimeError("DATABASE_URL not found. Add it to your .env file or environment variables.")
-
 
 # Use percent-encoded password in the URL if it contains special chars
 DATABASE_URL = "mysql+pymysql://root:Root%40123@127.0.0.1:3306/fastapi_demo"
